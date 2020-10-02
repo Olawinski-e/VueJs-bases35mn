@@ -3,23 +3,7 @@
     <div class="container">
       <Login :user="user" />
 
-      <div class="row">
-        <h1 class="w-100" v-bind:class="affichage">
-          Produits disponibles
-        </h1>
-
-        <div class="col-3" v-for="(produit, index) in produits" :key="index">
-          <p class="jumbotron">
-            {{ produit }}
-            <br />
-            <br />
-            <button class="btn btn-primary" @click="commandFood(produit)">
-              +
-            </button>
-          </p>
-        </div>
-      </div>
-      <!-- <FicheProduit /> -->
+      <FicheProduit :commandFood="commandFood" :affichage="affichage" />
 
       <div class="row" v-if="commandes.length > 0">
         <h1 class="w-100" v-bind:class="affichage">
@@ -41,20 +25,19 @@
 </template>
 
 <script>
-// import FicheProduit from "./components/FicheProduit";
+import FicheProduit from "./components/FicheProduit";
 // import ProduitPanier from "./components/ProduitPanier";
 import Login from "./components/Login";
 
 export default {
   name: "App",
-  components: { Login },
+  components: { Login, FicheProduit },
   data() {
     return {
       user: "",
-      produits: ["Pizza", "Cheese", "Tacos", "Kebab"],
+      produits: [],
       commandes: [],
-      total: [],
-      affichage: "display-6",
+      affichage: "",
     };
   },
   methods: {

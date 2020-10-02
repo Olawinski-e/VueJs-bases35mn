@@ -1,10 +1,11 @@
 <template>
   <div class="row">
+    <h1 class="w-100" v-bind:class="affichage">
+      Produits disponibles
+    </h1>
     <div class="col-3" v-for="(produit, index) in produits" :key="index">
       <p class="jumbotron">
         {{ produit }}
-        <br />
-        <br />
         <button class="btn btn-primary" @click="commandFood(produit)">
           +
         </button>
@@ -16,5 +17,16 @@
 <script>
 export default {
   name: "FicheProduit",
+  props: {
+    commandFood: Function,
+  },
+  data() {
+    return {
+      produits: ["Pizza", "Cheese", "Tacos", "Kebab"],
+      commandes: [],
+      affichage: "display-6",
+    };
+  },
+  methods: {},
 };
 </script>
