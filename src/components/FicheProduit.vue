@@ -23,10 +23,8 @@ export default {
   data() {
     return {
       produits: ["Pizza", "Cheese", "Tacos", "Kebab"],
-      commandes: [],
       affichage: "display-6",
     };
   },
-  methods: {},
 };
 </script>
