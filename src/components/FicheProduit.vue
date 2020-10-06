@@ -19,11 +19,16 @@ export default {
   name: "FicheProduit",
   props: {
     commandFood: Function,
+    affichage: {
+      type: String,
+      default() {
+        return "";
+      },
+    },
   },
   data() {
     return {
       produits: ["Pizza", "Cheese", "Tacos", "Kebab"],
-      affichage: "display-6",
     };
   },
 };

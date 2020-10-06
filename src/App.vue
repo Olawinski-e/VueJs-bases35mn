@@ -3,17 +3,13 @@
     <div class="container">
       <Login :user="user" />
 
-      <FicheProduit :commandFood="commandFood" v-bind:class="affichage" />
+      <FicheProduit :commandFood="commandFood" :affichage="affichage" />
 
-      <ProduitPanier />
-      <ul>
-        <li v-for="(commande, index) in commandes" :key="index">
-          {{ commande }}
-          <button class="btn btn-danger" @click="deleteFood(index)">
-            -
-          </button>
-        </li>
-      </ul>
+      <ProduitPanier
+        :deleteFood="deleteFood"
+        :commandes="commandes"
+        :affichage="affichage"
+      />
     </div>
   </div>
 </template>
@@ -38,11 +34,9 @@ export default {
   methods: {
     commandFood(produit) {
       this.commandes.push(produit);
-      console.log(this.commandes);
     },
     deleteFood(id) {
       this.commandes.splice(id, 1);
-      console.log(this.commandes);
     },
   },
 };
